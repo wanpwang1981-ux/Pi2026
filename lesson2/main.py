@@ -1,6 +1,11 @@
-def main():
-    print("Hello from lesson2!")
+from dotenv import load_dotenv
+from google import genai
 
+load_dotenv()
 
-if __name__ == "__main__":
-    main()
+client = genai.Client()
+
+response = client.models.generate_content(
+    model="gemini-2.5-flash", contents="天空為什麼藍的"
+)
+print(response.text)
